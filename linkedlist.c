@@ -1,5 +1,5 @@
 #include <stdio.h>  // Standard Input and Output functions
-#include <stdlib.h> // Standard Library for dynamic memory allocation
+#include <stdlib.h>// Standard Library for dynamic memory allocation
 
 int count = 0; // Keeps track of the number of nodes in the list
 
