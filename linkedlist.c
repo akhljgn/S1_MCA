@@ -27,7 +27,6 @@ void insert_pos();
 void delete_begin();
 void delete_end();
 void delete_pos();
-void search();
 void display();
 
 
@@ -35,7 +34,7 @@ int main() {
     int choice; // Variable to store the user's menu choice
     while (1) { // Infinite loop for continuous menu display
         // Displaying the menu to the user
-        printf("\n1. Creation\n2. Insert beginning\n3. Insert end\n4. Insert position\n5. Delete beginning\n6. Delete end\n7. Delete position\n8. Search\n9. Display\n10. Exit\n");
+        printf("\n1. Creation\n2. Insert beginning\n3. Insert end\n4. Insert position\n5. Delete beginning\n6. Delete end\n7. Delete position\n8. Display\n9. Exit\n");
         printf("\nEnter your choice: ");
         scanf("%d", &choice); // Reading the user's choice
         // Switch case to handle different user choices
@@ -62,12 +61,9 @@ int main() {
                 delete_pos();
                 break;
             case 8:
-                search();
-                break;
-            case 9:
                 display();
                 break;
-            case 10:
+            case 9:
                 exit(0); // Exiting the program
             default:
                 printf("\nInvalid choice"); // Handling invalid choices
@@ -239,31 +235,6 @@ void delete_pos() {
         temp->next = ptr->next;
         free(ptr);
         printf("\nNode deleted");
-    }
-}
-
-// Function to search for an element
-void search() {
-    struct node *ptr;
-    int item, count = 0, i = 0;
-    ptr = start;
-    if (ptr == NULL) {
-        printf("\nList is empty");
-    } else {
-        printf("\nEnter element to be searched: ");
-        scanf("%d", &item);
-        while (ptr != NULL) {
-            if (ptr->data == item) {
-                printf("\n%d found at position %d", ptr->data, i + 1);
-                count = 1;
-                break;
-            }
-            ptr = ptr->next;
-            i++;
-        }
-        if (count == 0) {
-            printf("\nElement not found");
-        }
     }
 }
 
