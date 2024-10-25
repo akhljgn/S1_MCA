@@ -1,3 +1,4 @@
+//program to do operations using circular queue
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -7,6 +8,7 @@ void insert();
 void delete();
 void display();
 
+//main function
 void main() 
 {
     int ch;
@@ -33,6 +35,8 @@ void main()
 		}
     }
 }
+
+//to perform insertion operations in circular queue
 void insert() 
 {
     int x;
@@ -54,6 +58,7 @@ void insert()
     }
 }
 
+//to display the content in circular queue
 void display() 
 {
     int i;
@@ -73,6 +78,7 @@ void display()
     }
 }
 
+//to perform deletion operations in circular queue
 void delete()
 {
     if(front==-1)
