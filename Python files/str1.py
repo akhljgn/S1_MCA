@@ -1,0 +1,8 @@
+c1=(input("Enter the color set 1:"))
+c2=(input("Enter the color set 2:"))
+c1=c1.split(" ")
+c2=c2.split(" ")
+d1=list(dict.fromkeys(c1))
+d2=list(dict.fromkeys(c2))
+print(d1)
+print(d2)           
