@@ -1,0 +1,18 @@
+.admin-dashboard .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .admin-dashboard .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .admin-dashboard .btn-success {
+    background-color: #28a745; /* Green color */
+    border: none;
+  }
+  
+  .admin-dashboard .btn-success:hover {
+    background-color: #218838;
+  }
+

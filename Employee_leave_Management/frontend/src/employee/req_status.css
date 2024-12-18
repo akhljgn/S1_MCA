@@ -1,0 +1,16 @@
+/* Add these styles to your CSS file */
+.Pending {
+    font-weight: bold;
+    color: blue !important;
+  }
+  
+  .approved {
+    font-weight: bold;
+    color: green !important;
+  }
+  
+  .rejected {
+    font-weight: bold;
+    color: red !important;
+  }
+  

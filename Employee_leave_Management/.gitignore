@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+/backend/node_modules
+/frontend/node_modules
+/frontend/build
+/node_modules
+=======
+/HTML/
+/data_structures/*.exe
+>>>>>>> 6dd5e058fab7dd59057c2a0d5dfd24d9e1c97c09

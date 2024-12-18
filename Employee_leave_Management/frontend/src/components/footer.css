@@ -1,0 +1,28 @@
+.container1{
+    background-color: rgba(7, 3, 3, 0.5);
+    text-align: center;
+    padding: 50px 100px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+
+.linkss{
+    display: flex;
+}
+
+.linkss ul li{
+    list-style: none;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+a:hover{
+    color: blue;
+}

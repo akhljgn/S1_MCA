@@ -1,0 +1,24 @@
+.dashboard-container {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.admin-dashboard, .employee-dashboard {
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.admin-dashboard h3 {
+    color: red;
+}
+
+.employee-dashboard h3 {
+    color: green;
+}

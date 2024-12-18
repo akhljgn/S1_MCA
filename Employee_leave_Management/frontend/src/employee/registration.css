@@ -1,0 +1,100 @@
+/* General styles for the Registration Page */
+.container {
+  background-color: rgb(150, 205, 253);
+  border-radius: 20px;
+  text-align: center;
+  padding: 10px 300px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.table{
+  margin-top: 30px;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #333;
+  padding: 10px;
+}
+
+input.form-control, textarea.form-control {
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+  
+
+  
+/* Styling for error messages */
+.text-danger {
+  font-size: 12px;
+  color: red;
+  margin-top: 5px;
+}
+
+
+  
+button[type="submit"] {
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 10px 30px;
+  font-size: 1rem;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    margin-top: 20px;
+    padding: 15px;
+  }
+
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+} 
+
+thead{
+ text-align: center;
+ border: 1px solid black;
+}
+
+
+/* Table styling for the rows and cells */
+table td {
+    padding: 10px 50px;
+    vertical-align: middle;
+}
+
+.heading{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+/* Styling for the form inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+textarea {
+  width: 100%; /* Make input fields take up full width of the cell */
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.employee-dashboard .card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.employee-dashboard .card:hover {
+  transform: scale(1.05);
+}
+
