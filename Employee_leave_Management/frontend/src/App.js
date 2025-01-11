@@ -9,6 +9,7 @@ import Footer from "./components/footer.js";
 import Dashboard from "./components/dashboard.js";
 import ViewLeaveRequests from "./admin/view_request.js";
 import ViewLeaveStatus from "./employee/req_status.js";
+import CheckedRequests from "./admin/checked_request.js";
 
 // import AdminDashboard from "./admin";
 // import "./App.css";
@@ -30,6 +31,7 @@ function App() {
             <Route path="/signin" element={<EmployeeLogin />} />
             <Route path="/view-requests" element={<ViewLeaveRequests />} />
             <Route path="/view-req-status" element={<ViewLeaveStatus />} />
+            <Route path="/checked-requests" element={<CheckedRequests />} />
           </Routes>
         </Router>
         <Footer />

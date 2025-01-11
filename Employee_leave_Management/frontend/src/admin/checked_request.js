@@ -2,39 +2,30 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./req_status.css";
+import "../employee/emp_list.css";
 
-function ViewLeaveStatus() {
+function CheckedRequests() {
   const [leaveRequests, setLeaveRequests] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Fetch approved or rejected leave requests from the backend
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (!user || !user.id) {
-      toast.error("No employee ID found! Please log in.");
-      return;
-    }
-
-    const id = user.id;
-
-    // Fetch leave requests with id
-    const fetchLeaveRequests = async () => {
+    const fetchCheckedRequests = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/viewLeaveStatus/${id}`
+            "http://localhost:5000/api/checkLeaveRequest"
         );
         setLeaveRequests(response.data);
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        toast.error("Failed to fetch your leave requests!");
+        toast.error("Failed to fetch checked leave requests!");
         console.error("Error fetching leave requests:", error);
       }
     };
 
-    fetchLeaveRequests();
-  }, []); // Empty dependency means it runs only once on component mount
+    fetchCheckedRequests();
+  }, []);
 
   // Function to format the date to dd/mm/yyyy hh:mm:ss
   const formatDate = (dateString) => {
@@ -49,36 +40,34 @@ function ViewLeaveStatus() {
 
   return (
     <div className="container3">
-      <h2 className="text-center my-4">Your Leave Requests</h2>
+      <h2 className="text-center my-4">Checked Leave Requests</h2>
       {loading ? (
         <div>Loading...</div>
       ) : (
         <table className="table table-bordered table-striped table-hover">
           <thead className="table-dark">
             <tr>
-              <th>#</th>
+              <th>Employee ID</th>
+              <th>Employee Name</th>
               <th>Leave Type</th>
               <th>Request</th>
               <th>Start Date</th>
               <th>End Date</th>
-              <th>Status</th> {/* Show status column */}
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            {leaveRequests.length > 0 ? (
-              leaveRequests.map((leaveRequest, index) => (
-                <tr key={leaveRequest.leave_request_id}>
-                  <td>{index + 1}</td> {/* Display index number (1-based) */}
-                  <td>{leaveRequest.leave_type}</td>
-                  <td>{leaveRequest.request}</td>
-                  <td>{formatDate(leaveRequest.startdate)}</td>
-                  <td>{formatDate(leaveRequest.enddate)}</td>
-                  {/* Conditionally apply class based on the status */}
-                  <td
+            {leaveRequests.map((leaveRequest) => (
+              <tr key={leaveRequest.leave_request_id}>
+                <td>{leaveRequest.employee_id}</td>
+                <td>{leaveRequest.employee_name}</td>
+                <td>{leaveRequest.leave_type}</td>
+                <td>{leaveRequest.request}</td>
+                <td>{formatDate(leaveRequest.startdate)}</td>
+                <td>{formatDate(leaveRequest.enddate)}</td>
+                <td
                     className={
-                      leaveRequest.status === "Pending"
-                        ? "Pending"
-                        : leaveRequest.status === "approved"
+                    leaveRequest.status === "approved"
                         ? "approved"
                         : leaveRequest.status === "rejected"
                         ? "rejected"
@@ -87,22 +76,16 @@ function ViewLeaveStatus() {
                   >
                     {leaveRequest.status}
                   </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="5" className="text-center">
-                  No leave requests found
-                </td>
               </tr>
-            )}
+            ))}
           </tbody>
         </table>
       )}
+
       {/* ToastContainer for notifications */}
       <ToastContainer />
     </div>
   );
 }
 
-export default ViewLeaveStatus;
+export default CheckedRequests;

@@ -20,6 +20,17 @@ function Emp_list() {
 
   const filteredEmployees = employee.filter((emp) => emp.role !== "Admin");
 
+  // Function to format the date to dd/mm/yyyy hh:mm:ss
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    };
+    return date.toLocaleString("en-GB", options); // 'en-GB' gives dd/mm/yyyy format
+  };
+
   // Handle delete
   const DeleteEmp = async (empId) => {
     try {
@@ -52,20 +63,28 @@ function Emp_list() {
         <table className="table table-bordered table-striped table-hover">
           <thead className="table-dark">
             <tr>
+              <th>Index</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Department</th>
+              <th>Date Of Birth</th>
               <th>Salary</th>
               <th>Phone</th>
+              <th>Address</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {filteredEmployees.map((data) => (
+            {filteredEmployees.map((data, index) => (
               <tr key={data.id}>
+                <td>{index + 1}</td> {/* Index starts from 1 */}
                 <td>{data.name}</td>
                 <td>{data.email}</td>
+                <td>{data.department}</td>
+                <td>{formatDate(data.date_of_birth)}</td>
                 <td>{data.salary}</td>
                 <td>{data.phone}</td>
+                <td>{data.address}</td>
                 <td>
                   <div className="d-flex justify-content-center">
                     {/* Delete button */}

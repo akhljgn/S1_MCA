@@ -199,7 +199,7 @@ app.post("/api/leaveReq", async (req, res) => {
 ///////////////////////////////////////
 app.get("/api/viewLeaveRequests", (req, res) => {
   const query =
-    "SELECT lr.id AS leave_request_id, lr.request, lr.startdate, lr.enddate, lr.leave_type, e.id AS employee_id, e.name AS employee_name FROM leave_request lr JOIN Employee e ON lr.empid = e.id";
+    "SELECT lr.id AS leave_request_id, lr.request, lr.startdate, lr.enddate, lr.leave_type, e.id AS employee_id, e.name AS employee_name FROM leave_request lr JOIN Employee e ON lr.empid = e.id where status = 'Pending' ORDER BY lr.id DESC";
 
   db.query(query, (err, results) => {
     if (err) {
@@ -211,6 +211,25 @@ app.get("/api/viewLeaveRequests", (req, res) => {
     res.json(results); // Send the leave request data along with employee details as a JSON response
   });
 });
+
+/////////////////////////////////////////
+app.get("/api/checkLeaveRequest", (req, res) => {
+  const query =
+    "SELECT lr.id AS leave_request_id, lr.request, lr.startdate, lr.enddate, lr.leave_type, e.id AS employee_id, e.name AS employee_name, lr.status FROM leave_request lr JOIN Employee e ON lr.empid = e.id WHERE lr.status IN ('approved', 'rejected') ORDER BY lr.id DESC";
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error("Error fetching leave requests: ", err);
+      return res
+        .status(500)
+        .send("Error fetching leave requests from the database");
+    }
+    res.json(results); // Send the leave request data along with employee details as a JSON response
+  });
+});
+
+
+
 
 // update leave status to 'approved' or 'rejected'
 app.post("/api/checkLeaveRequest", (req, res) => {
@@ -254,7 +273,7 @@ app.get("/api/viewLeaveStatus/:empId", (req, res) => {
   const query = `
     SELECT lr.id AS leave_request_id, lr.request, lr.startdate, lr.enddate, lr.leave_type, lr.status
     FROM leave_request lr
-    WHERE lr.empid = ?`;
+    WHERE lr.empid = ? ORDER BY lr.id DESC`;
 
   db.query(query, [empId], (err, results) => {
     if (err) {
