@@ -272,3 +272,22 @@ void display() {
         }
     }
 }
+// Function to display the doubly linked list in reverse order
+void display_reverse() {
+    struct node *ptr;
+    ptr = start;
+    if (ptr == NULL) {
+        printf("\nList is empty");
+        return;
+    }
+    // Traverse to the last node
+    while (ptr->next != NULL) {
+        ptr = ptr->next;
+    }
+    // Print the list in reverse order
+    printf("\nList in reverse: ");
+    while (ptr != NULL) {
+        printf("%d ", ptr->data);
+        ptr = ptr->prev;
+    }
+}
